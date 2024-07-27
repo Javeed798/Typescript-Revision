@@ -4,7 +4,7 @@
 // class User {
 //   name: string;
 //   age: number;
-//   // readonly city: string = "Bangalore";
+//   readonly city: string = "Bangalore";
 //   private readonly city: string = "Bangalore";
 
 //   constructor(name: string, age: number) {
@@ -20,7 +20,9 @@ class User {
   // readonly city: string = "Bangalore";
   private readonly city: string = "Bangalore";
 
-  private _courseCount = 1;
+  // private _courseCount = 1;
+  // if we use protected it can be used in its classes and also to those where it is inherited. 
+  protected _courseCount = 1;
 
   constructor(public name: string, public age: number) {
     this.name = name;
@@ -42,11 +44,19 @@ class User {
     }
     this._courseCount = newCount;
   }
-
   // private methods
   private deleteToken() {
     console.log("Delete Token");
     
+  }
+}
+
+
+class SubUser extends User {
+  isFamily : boolean = true
+
+  changeCourseCount() {
+    this._courseCount = 4;
   }
 }
 
